@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import AnalogueClock from '../AnalogueClock/AnalogueClock'
 import DigitalClock from '../DigitalClock/DigitalClock'
-import { Button } from 'evergreen-ui'
-import { SegmentedControl } from 'evergreen-ui'
+import { Button, Pane } from 'evergreen-ui'
+import { SegmentedControl, majorScale } from 'evergreen-ui'
 import './Timer.css'
 
 function Timer() {
@@ -71,25 +71,61 @@ function Timer() {
 
     return (
         <div className="main-container">
-            <div>
+            <Pane
+                height='100%'
+                width='100%'
+                backgrounf='tealTint'
+                display="flex"
+                // padding={26}
+                // margin={26}
+                alignItems="center"
+                justifyContent="center"
+            >
                 <SegmentedControl
-                    width={600}
+                    width={420}
                     name="switch"
-                    height={40}
+                    height={majorScale(5)}
                     appearance="success"
                     intent="danger"
                     options={controls.options}
                     value={mode.code}
                     onChange={value => setMode(modes[value])}
                 />
-            </div>
-            <div>
+            </Pane>
+            <Pane
+                height='100%'
+                width='100%'
+                backgrounf='tealTint'
+                display="flex"
+                paddingTop={28}
+                // margin={26}
+                alignItems="center"
+                justifyContent="center"
+            >
                 <AnalogueClock standby={standby} fixedDate={fixedDate} date={date} mode={mode} pause={pause} />
-            </div>
-            <div>
+            </Pane>
+            <Pane
+                height='100%'
+                width={100}
+                backgrounf='tealTint'
+                display="flex"
+                paddingTop={28}
+                // margin={26}
+                alignItems="center"
+                // justifyContent="center"
+            >
                 <DigitalClock standby={standby} mode={mode} pause={pause} />
-            </div>
-            <div>
+            </Pane>
+            <Pane
+                height='100%'
+                width='100%'
+                backgrounf='tealTint'
+                display="flex"
+                padding={26}
+                // margin={26}
+                alignItems="center"
+                justifyContent="center"
+            >
                 <Button height={40}
                     marginRight={16} appearance="primary" intent="success"
                     onClick={
@@ -126,7 +162,7 @@ function Timer() {
                     }>
                     Reset
                 </Button>
-            </div>
+            </Pane>
         </div >
     );
 }

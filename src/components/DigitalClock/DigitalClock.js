@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react"
+import { Pane, Text, Heading } from 'evergreen-ui'
+
 import "./DigitalClock.css";
 
 function DigitalClock({ mode, pause, standby }) {
@@ -79,9 +81,10 @@ function DigitalClock({ mode, pause, standby }) {
     }
 
     return (
-        <>
-            {true && <h1>{display}</h1>}
-        </>
+
+        < Heading size={ 900} > { display }</Heading >
+
+
     );
 }
 
