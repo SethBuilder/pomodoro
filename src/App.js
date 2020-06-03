@@ -1,24 +1,22 @@
 import React from 'react';
 import Timer from './components/Timer/Timer';
-import NavBar from './components/NavBar/NavBar'
-import Footer from './components/Footer/Footer'
-import { Pane, Text } from 'evergreen-ui'
+import { Pane } from 'evergreen-ui'
 import './App.css';
-
+import NavBar from './components/NavBar/NavBar';
 function App() {
   return (
 
       <Pane
         height='100%'
         width='100%'
-        background='blueTint'
+        background='#BCD0E7'
         display="flex"
         // padding={26}
         // margin={26}
         alignItems="center"
         justifyContent="center"
       >
-        {/* <NavBar /> */}
+        <NavBar />
         <Timer />
       </Pane>
   );

@@ -2,9 +2,47 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background-color: #F7F9FD; */
+  background-color: #BCD0E7;
 }
 
 body, html, #root {
   height: 100%;
 }
+
+/*! CSS Used from: Embedded */
+div,p,a{font:inherit;}
+section{background-color:#eeeeee;}
+section,.container{position:relative;word-wrap:break-word;}
+a{font-style:normal;font-weight:400;cursor:pointer;}
+a,a:hover{text-decoration:none;}
+section{background-position:50% 50%;background-repeat:no-repeat;background-size:cover;}
+.mbr-white{color:#ffffff;}
+.align-center{text-align:center;}
+@media (max-width: 767px){
+.align-center{text-align:center;}
+}
+*{box-sizing:border-box;}
+.mbr-text{font-style:normal;line-height:1.6;}
+.display-7{font-family:'Roboto', sans-serif;font-size:1.1rem;}
+a,a:hover{color:#ff2924;}
+p{padding:10px 0;margin-bottom:15px;}
+p{color:#15181b;letter-spacing:0.5px;line-height:1.7;}
+.container{padding-right:15px;padding-left:15px;width:100%;margin-right:auto;margin-left:auto;}
+@media (max-width: 767px){
+.container{max-width:540px;}
+}
+@media (min-width: 768px){
+.container{max-width:720px;}
+}
+@media (min-width: 992px){
+.container{max-width:960px;}
+}
+@media (min-width: 1200px){
+.container{max-width:1140px;}
+}
+@media (max-width: 767px){
+.mbr-col-sm-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%;padding-right:15px;padding-left:15px;}
+}
+p{margin-top:0;}
+.cid-qEsj1x8oQy{padding-top:30px;padding-bottom:30px;background-color:#BCD0E7;}
+.cid-qEsj1x8oQy p{margin:0;color:rgba(65, 84, 102, .9);}

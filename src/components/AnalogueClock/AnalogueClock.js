@@ -36,7 +36,7 @@ function AnalogueClock({ date, mode, fixedDate, pause, standby }) {
         
         if (pause && !standby) {
             setSector(pauseSector);
-        } else if (!standby && mode.name === 'Pomodoro' || mode.name === 'Short Break' || mode.name === 'Long Break') {
+        } else if (!standby && (mode.name === 'Pomodoro' || mode.name === 'Short Break' || mode.name === 'Long Break')) {
             setSector(pomodoroSector);
         } else {
             setSector(noSector);

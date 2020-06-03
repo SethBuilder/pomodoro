@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react"
-import { Pane, Text, Heading } from 'evergreen-ui'
+import {  Heading } from 'evergreen-ui'
 
 import "./DigitalClock.css";
 
-function DigitalClock({ mode, pause, standby }) {
+function DigitalClock({ mode, pause, standby, proceed }) {
     const [display, setDisplay] = useState(`${mode.duration}:00`);
     const [duration, setDuration] = useState(mode.duration * 60 - 1);
     const [currentMode, setCurrentMode] = useState(mode);
@@ -23,61 +23,54 @@ function DigitalClock({ mode, pause, standby }) {
         );
         document.title = `${minutes}:${seconds}`
         // }
-        if (standby) {
+        if (currentMode.code !== mode.code || standby) {
+            console.log('CHANGED MODE')
             setDuration(mode.duration * 60 - 1)
             setDisplay(
                 `${mode.duration}:00`
             )
+            // setCurrentMode(mode)
         }
         else {
-            // countdown = setInterval(timer, 1000);
             if (duration < 0) {
-                // alert('f')
                 clearInterval(countdown)
             }
         }
 
-        // return () => {
-        //     clearInterval(countdown);
-        // };
     }, !pause && duration >= 0 ? 1000 : null, mode, duration, standby, currentMode);
 
     function useInterval(callback, delay, mode, duration) {
         const savedCallback = useRef();
-        let id;
+        
 
-        // Remember the latest function.
         useEffect(() => {
             savedCallback.current = callback;
         }, [callback]);
 
-        // Set up the interval.
         useEffect(() => {
-            console.log(mode)
-            // setDisplay(prevDisplay => {
-            //     console.log('prevDisplay', prevDisplay)
-            //     return `${prevDisplay}`
-            // })
-            // setDuration(prevDuration => {
-            //     console.log('prevDuration', prevDuration, duration)
-            //     return prevDuration
-            // })
-
+            let id;
             if (currentMode.code !== mode.code || standby) {
                 setDisplay(`${mode.duration}:00`)
                 setDuration(mode.duration * 60 - 1)
                 setCurrentMode(mode)
             }
-            console.log(duration === 0, 'hhhhhhhh')
+            // console.log(duration === 0, 'hhhhhhhh')
 
             function tick() {
                 savedCallback.current();
             }
-            if (delay !== null && !standby) {
+            if (delay !== null) {
                 id = setInterval(tick, delay);
                 return () => clearInterval(id);
+            } else if(!pause) {
+                console.log('ffdffd')
+                proceed()
+                setDuration(mode.duration * 60 - 1)
+                setDisplay(
+                    `${mode.duration}:00`
+                )
             }
-        }, [delay, mode, duration, standby, currentMode]);
+        }, [delay, duration, standby, currentMode]);
     }
 
     return (

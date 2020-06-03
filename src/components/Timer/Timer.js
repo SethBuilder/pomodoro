@@ -22,11 +22,6 @@ function Timer() {
             code: 'longBreak',
             duration: 10
         },
-        // standby: {
-        //     name: 'standby',
-        //     code: 'standby',
-        //     duration: 3
-        // },
         flow: {
             name: 'Flow',
             code: 'flow'
@@ -40,6 +35,7 @@ function Timer() {
     const [mode, setMode] = useState(modes.pomodoro);
     const [pause, setPause] = useState(false);
     const [standby, setStandby] = useState(true);
+    const [pomodoroCount, setPomodoroCount] = useState(0);
 
     const controls = {
         options: [
@@ -49,16 +45,36 @@ function Timer() {
         ],
         value: 'pomodoro'
     }
+    const proceed = () => {
+        console.log("pomodorocount", pomodoroCount)
+        if (pomodoroCount > 3 && mode.code === modes.pomodoro.code) {
+            setPomodoroCount(0)
+            setMode(modes.longBreak)
+            console.log(1)
+        }
+
+        else if (mode.code === modes.shortBreak.code || mode.code === modes.longBreak.code) {
+            setMode(modes.pomodoro)
+            console.log(2)
+
+        }
+
+        else if (mode.code === modes.pomodoro.code) {
+            setPomodoroCount(pomodoroCount => pomodoroCount + 1);
+            setMode(modes.shortBreak)
+            console.log(3)
+        }
+    }
 
     useEffect(() => {
 
         const tick = () => {
-            // console.log(fixedDate)
             setDate(new Date())
             if (pause && date.getSeconds() === 59) {
                 setFixedDate(new Date(fixedDate.setMilliseconds(fixedDate.getMilliseconds() + 1000 * 60)))
             }
         }
+
         const secondsTimer = setInterval(
             () => tick(),
             1000
@@ -112,9 +128,9 @@ function Timer() {
                 paddingTop={28}
                 // margin={26}
                 alignItems="center"
-                // justifyContent="center"
+            // justifyContent="center"
             >
-                <DigitalClock standby={standby} mode={mode} pause={pause} />
+                <DigitalClock standby={standby} mode={mode} pause={pause} proceed={proceed} />
             </Pane>
             <Pane
                 height='100%'
