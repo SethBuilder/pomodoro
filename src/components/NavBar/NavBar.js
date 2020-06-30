@@ -14,7 +14,7 @@ const NavBar = () => (
         {/* <li className="ampstart-nav-item "><a href="#" className="text-decoration-none block">About</a></li> */}
         {/* <li className="ampstart-nav-item "><a href="#" className="text-decoration-none block">Contact</a></li> */}
         <li className="ampstart-nav-item " style={{marginTop: '10px'}}>
-          <a href="#" className="text-decoration-none block">
+          <a href="/" className="text-decoration-none block">
             <TwitterShareButton
               url={'https://pomodoro.seif.rocks'}
               options={{ text: 'This #pomodoro timer is awesome', via: 'seifjo1', height: 600 }}
